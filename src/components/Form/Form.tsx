@@ -10,9 +10,6 @@ const Form: FC<IProps> = ({ updateNumbers }) => {
 
   const onFormSubmit = (data: IFormData) => {
     const amount = Number(data[InputNames.amountOfNumbers]);
-
-    if (!amount) return;
-
     const numbers = getNumbers(amount);
     updateNumbers(numbers);
   };
@@ -22,6 +19,7 @@ const Form: FC<IProps> = ({ updateNumbers }) => {
       <input
         {...register(InputNames.amountOfNumbers, {
           min: GeneralParams.numberOfMissingNumbers + 1,
+          required: true,
         })}
         defaultValue={0}
         type='number'
