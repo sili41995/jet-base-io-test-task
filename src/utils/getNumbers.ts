@@ -1,5 +1,7 @@
-const getNumbers = (amount: number): number[] => {
-  const numbers = [];
+import { Numbers } from '@/types/types';
+
+const getNumbers = (amount: number): Numbers => {
+  const numbers: Numbers = [];
   const numbersSet = new Set<number>([]);
 
   while ([...numbersSet].length !== 2) {

@@ -1,3 +1,5 @@
+import { Numbers } from '@/types/types';
+
 export interface IProps {
-  updateNumbers: (numbers: number[]) => void;
+  updateNumbers: (numbers: Numbers) => void;
 }

@@ -1,7 +1,7 @@
 import { FC } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { IProps } from './Form.types';
 import { GeneralParams, InputNames } from '@/constants';
-import { SubmitHandler, useForm } from 'react-hook-form';
 import { IFormData } from '@/types/types';
 import { getNumbers } from '@/utils';
 
