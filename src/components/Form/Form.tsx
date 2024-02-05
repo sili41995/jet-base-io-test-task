@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import { IProps } from './Form.types';
 import { GeneralParams, InputNames } from '@/constants';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { IFormData } from '@/types/types';
 import { getNumbers } from '@/utils';
 
 const Form: FC<IProps> = ({ updateNumbers }) => {
   const { register, handleSubmit } = useForm<IFormData>();
 
-  const onFormSubmit = (data: IFormData) => {
+  const onFormSubmit: SubmitHandler<IFormData> = (data) => {
     const amount = Number(data[InputNames.amountOfNumbers]);
     const numbers = getNumbers(amount);
     updateNumbers(numbers);
