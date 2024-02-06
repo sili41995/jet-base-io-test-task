@@ -1,12 +1,17 @@
+import { GeneralParams } from '@/constants';
 import { Numbers } from '@/types/types';
 
 const getNumbers = (amount: number): Numbers => {
   const numbers: Numbers = [];
   const numbersSet = new Set<number>([]);
+  const numberOfMissingNumbers = GeneralParams.numberOfMissingNumbers;
 
-  while ([...numbersSet].length !== 2) {
-    numbersSet.add(Math.ceil(Math.random() * amount));
-  }
+  const maxRandomNumber = amount - numberOfMissingNumbers;
+  const randomNumber =
+    Math.random() * (maxRandomNumber - numberOfMissingNumbers) +
+    numberOfMissingNumbers;
+  numbersSet.add(Math.round(randomNumber));
+  numbersSet.add(Math.round(randomNumber + 1));
 
   const missingNumbers = Array.from(numbersSet);
 

@@ -7,6 +7,7 @@ import { getNumbers } from '@/utils';
 
 const Form: FC<IProps> = ({ updateNumbers }) => {
   const { register, handleSubmit } = useForm<IFormData>();
+  const minValue = GeneralParams.numberOfMissingNumbers + 2;
 
   const onFormSubmit: SubmitHandler<IFormData> = (data) => {
     const amount = Number(data[InputNames.amountOfNumbers]);
@@ -15,14 +16,20 @@ const Form: FC<IProps> = ({ updateNumbers }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onFormSubmit)}>
+    <form
+      onSubmit={handleSubmit(onFormSubmit)}
+      onError={() => {
+        alert('asd');
+      }}
+    >
       <input
         {...register(InputNames.amountOfNumbers, {
-          min: GeneralParams.numberOfMissingNumbers + 1,
+          min: minValue,
           required: true,
         })}
         defaultValue={0}
         type='number'
+        min={minValue}
       />
       <button type='submit'>Accept</button>
     </form>
